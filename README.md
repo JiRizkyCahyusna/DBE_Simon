@@ -11,25 +11,25 @@ Repositori ini berisi kumpulan query SQL untuk membangun sistem database kehadir
 ![SIMON ERD](https://github.com/user-attachments/assets/39f821d1-541d-4021-a5e5-353e6b190b50)
 
 **🔁 Relasi Kardinalitas Antar Tabel**
-1. User → Dosen (1 : 1)
+1. User → Dosen (1 : 1) :
 Setiap user hanya dapat mewakili satu dosen, dan seorang dosen hanya memiliki satu akun user. Hubungan ini menunjukkan relasi satu-satu.
 
-2. User → Mahasiswa (1 : 1)
+2. User → Mahasiswa (1 : 1) :
 Seorang user hanya dapat terhubung dengan satu mahasiswa, dan setiap mahasiswa memiliki satu akun user. Ini adalah relasi satu-satu juga.
 
-3. Kelas → Mahasiswa (1 : N)
+3. Kelas → Mahasiswa (1 : N) :
 Satu kelas bisa berisi banyak mahasiswa, tetapi setiap mahasiswa hanya dapat berada dalam satu kelas. Ini merupakan relasi satu ke banyak.
 
-4. Dosen → Kehadiran (1 : N)
+4. Dosen → Kehadiran (1 : N) :
 Seorang dosen bisa memiliki banyak data kehadiran karena mengajar lebih dari satu kelas atau mata kuliah. Artinya, satu dosen terhubung ke banyak catatan kehadiran.
 
-5. Mahasiswa → Kehadiran (1 : N)
+5. Mahasiswa → Kehadiran (1 : N) :
 Seorang mahasiswa bisa memiliki banyak data kehadiran karena mengikuti berbagai mata kuliah. Ini juga merupakan relasi satu ke banyak.
 
-6. Mata Kuliah → Kehadiran (1 : N)
+6. Mata Kuliah → Kehadiran (1 : N) :
 Setiap mata kuliah bisa memiliki banyak data kehadiran karena diikuti oleh banyak mahasiswa. Relasi ini juga satu ke banyak.
 
-7. Kelas → Kehadiran (1 : N)
+7. Kelas → Kehadiran (1 : N) :
 Satu kelas dapat muncul dalam banyak data kehadiran karena mencakup kehadiran mahasiswa di berbagai pertemuan. Ini juga relasi satu ke banyak.
 
 
