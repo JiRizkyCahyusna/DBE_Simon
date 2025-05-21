@@ -119,7 +119,7 @@ INSERT INTO user (username, password, level) VALUES
 ```
 
 - **👨‍🏫 Tabel dosen**
-- 
+  
 Memasukkan data dosen beserta nidn, nama, dan referensi id_user.
 
 ```sql
@@ -132,6 +132,7 @@ INSERT INTO dosen VALUES
 ```
 
 - **🏫 Tabel kelas**
+  
 Menambah data kelas dengan kode dan nama kelas.
 
 ```sql
