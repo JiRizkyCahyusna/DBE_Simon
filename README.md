@@ -7,13 +7,12 @@ Repositori ini berisi kumpulan query SQL untuk membangun sistem database kehadir
 ---
 #
 ## 🧱 Struktur Tabel dan Relasi
-
-```sql
-1. Create Table
---👤 Tabel user
+## 1. Create Table
+👤 Tabel user
 Menyimpan data akun pengguna sistem: dosen, mahasiswa, dan admin.
 Primary key: id_user.
 Menyimpan username, password, dan level user.
+```sql
 
 CREATE TABLE user (
   id_user INT(10) AUTO_INCREMENT PRIMARY KEY,
@@ -21,7 +20,7 @@ CREATE TABLE user (
   password VARCHAR(30) NOT NULL,
   level VARCHAR(30) NOT NULL
 );
-
+--
 -- 👨‍🏫 Tabel dosen
 Menyimpan data dosen dengan nomor induk (nidn).
 Terhubung ke user agar dosen punya akun login.
