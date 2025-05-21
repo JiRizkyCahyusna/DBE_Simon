@@ -7,9 +7,10 @@ Repositori ini berisi kumpulan query SQL untuk membangun sistem database kehadir
 ---
 #
 ## 🧱 Struktur Tabel dan Relasi
-🆕 Tabel dan Query CREATE
-- 👤 **Tabel `user`**  
-- Menyimpan data pengguna sistem.
+## 1. 🆕 Tabel dan Query CREATE
+- 👤 **Tabel user**  
+
+  Menyimpan data pengguna sistem.
 
 ```sql
 CREATE TABLE user (
@@ -21,7 +22,8 @@ CREATE TABLE user (
 ```
 
 - 👨‍🏫 **Tabel dosen**
-Menyimpan data dosen, terhubung dengan user.
+
+  Menyimpan data dosen, terhubung dengan user.
 
 ```sql
   CREATE TABLE dosen (
@@ -33,6 +35,7 @@ Menyimpan data dosen, terhubung dengan user.
 ```
 
 -🏫 **Tabel kelas**
+
 Menyimpan kode dan nama kelas.
 
 ```sql
@@ -43,6 +46,7 @@ CREATE TABLE kelas (
 ```
 
 - **🎓 Tabel mahasiswa**
+
 Data mahasiswa dengan relasi ke user dan kelas.
 
 ```sql
@@ -58,6 +62,7 @@ CREATE TABLE mahasiswa (
 ```
 
 - **📚 Tabel matkul**
+
 Data mata kuliah dengan SKS.
 
 ```sql
@@ -70,6 +75,7 @@ CREATE TABLE matkul (
 
 
 - **🗓️ Tabel kehadiran**
+
 Mencatat kehadiran mahasiswa per pertemuan.
 
 ```sql
@@ -89,3 +95,212 @@ CREATE TABLE kehadiran (
   CONSTRAINT unique_kehadiran UNIQUE (npm, tanggal, pertemuan)
 );
 ```
+## 2. 📥 Data Insertion (INSERT)
+
+Bagian ini berisi query untuk menambahkan data ke dalam tabel-tabel pada database.
+
+- **👤 Tabel user**
+
+Menambahkan data user dengan atribut username, password, dan level.
+
+```sql
+INSERT INTO user (username, password, level) VALUES
+('Andin Ardelina', 'andin03', 'dosen'),
+('Ji Rizky Cahyusna', 'nana12', 'mahasiswa'),
+('Hana Kurnia', 'hana14', 'admin'),
+('Windy Anggita', 'windy23', 'dosen'),
+('Ibnu Zaki', 'ibnu22', 'mahasiswa'),
+('Putri Aulia', 'putri29', 'dosen'),
+('Surya Wijaya', 'surya30', 'dosen'),
+('Amelia Zahra', 'amel91', 'mahasiswa'),
+('Santosa Setiya', 'santosa76', 'mahasiswa'),
+('Dedi Prasetyo', 'dedi56', 'dosen'),
+('Sarah Amaleya', 'sarah40', 'mahasiswa');
+```
+
+- **👨‍🏫 Tabel dosen**
+- 
+Memasukkan data dosen beserta nidn, nama, dan referensi id_user.
+
+```sql
+INSERT INTO dosen VALUES
+(2206231, 'Andin Ardelina', 1),
+(2206232, 'Windy Anggita', 4),
+(2206233, 'Putri Aulia', 6),
+(2206234, 'Surya Wijaya', 7),
+(2206235, 'Dedi Prasetyo', 10);
+```
+
+- **🏫 Tabel kelas**
+Menambah data kelas dengan kode dan nama kelas.
+
+```sql
+INSERT INTO kelas VALUES 
+('KLS01', 'A'),
+('KLS02', 'B'),
+('KLS03', 'C'),
+('KLS04', 'D'),
+('KLS05', 'E');
+```
+
+- **🎓 Tabel mahasiswa**
+  
+Menambahkan data mahasiswa lengkap dengan NPM, nama, email, id_user, dan kelas.
+
+```sql
+INSERT INTO mahasiswa VALUES
+(330102065, 'Ji Rizky Cahyusna', 'jicantik12@gmail.com', 2, 'KLS03'),
+(330102066, 'Ibnu Zaki', 'ibnuzaki@gmail.com', 5, 'KLS05'),
+(330102067, 'Amelia Zahra', 'amelia@gmail.com', 8, 'KLS04'),
+(330102068, 'Santosa Setiya', 'santosa@gmail.com', 9, 'KLS01'),
+(330102069, 'Sarah Amaleya', 'sarah@gmail.com', 11, 'KLS02');
+```
+
+- **📚 Tabel matkul**
+  
+Memasukkan data mata kuliah dengan kode, nama, dan jumlah SKS.
+
+```sql
+INSERT INTO matkul VALUES
+('MTK01', 'Matematika Dasar', 3),
+('FIS02', 'Fisika', 2),
+('PGR03', 'Pemrograman Web', 4),
+('SBD04', 'Sistem Basis Data', 3),
+('JRM05', 'Jaringan Komputer', 3);
+```
+
+- **📝 Tabel kehadiran**
+  
+Menambahkan data kehadiran mahasiswa untuk mata kuliah tertentu, tanggal, pertemuan, dan status.
+
+```sql
+INSERT INTO kehadiran (tanggal, pertemuan, status, npm, nidn, kode_matkul, kode_kelas) VALUES
+('2025-02-11', 1, 'Hadir', 330102065, 2206232, 'SBD04', 'KLS03'),
+('2025-02-12', 1, 'Izin', 330102066, 2206235, 'FIS02', 'KLS05'),
+('2025-02-13', 2, 'Sakit', 330102067, 2206231, 'JRM05', 'KLS04'),
+('2025-02-14', 2, 'Alpha', 330102068, 2206234, 'MTK01', 'KLS01'),
+('2025-02-15', 3, 'Hadir', 330102069, 2206233, 'PGR03', 'KLS02');
+```
+
+## 3. 🔍 Query SELECT
+
+Query SELECT digunakan untuk mengambil data dari tabel dalam database dengan tampilan yang rapi dan terurut.
+
+- **📚 Query untuk mengambil data dari tabel kelas**
+
+Menampilkan daftar kelas lengkap dengan nomor urut.
+
+```sql
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY kode_kelas) AS No,
+    kelas.* 
+FROM Kelas;
+```
+- **👨‍🏫 Query untuk mengambil data dari tabel dosen**
+
+Menampilkan daftar dosen dengan nomor urut berdasarkan NIDN.
+
+```sql
+SELECT 
+  ROW_NUMBER() OVER (ORDER BY d.nidn) AS No,
+  d.nidn, d.nama_dosen 
+FROM Dosen d;
+```
+
+- **📖 Query untuk mengambil data dari tabel matkul**
+
+Menampilkan daftar mata kuliah lengkap dengan nomor urut.
+
+```sql
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY kode_matkul) AS No,
+    matkul.* 
+FROM Matkul;
+```
+
+## 4. 🔗 JOIN QUERY
+- **🎓 Mahasiswa dan Kelas**
+
+```sql
+SELECT 
+  ROW_NUMBER() OVER (ORDER BY m.npm) AS No,
+  m.npm, m.nama_mahasiswa, m.email, k.nama_kelas
+FROM Mahasiswa m
+JOIN Kelas k ON m.kode_kelas = k.kode_kelas;
+```
+- 📝 Penjelasan:
+Query ini digunakan untuk menampilkan data mahasiswa beserta nama kelasnya. Tabel mahasiswa di-JOIN dengan tabel kelas berdasarkan kolom kode_kelas yang menjadi relasi antara keduanya.
+
+- **📝 Kehadiran Lengkap**
+```sql
+SELECT 
+  m.npm, m.nama_mahasiswa, kh.tanggal, kh.pertemuan, kh.status,
+  mk.nama_matkul, d.nama_dosen
+FROM Kehadiran kh
+JOIN Mahasiswa m ON kh.npm = m.npm
+JOIN Matkul mk ON kh.kode_matkul = mk.kode_matkul
+JOIN Dosen d ON kh.nidn = d.nidn;
+```
+- 📝 Penjelasan:
+  
+Query ini menampilkan data kehadiran lengkap, termasuk informasi mahasiswa, dosen, dan mata kuliah. Query ini melakukan beberapa JOIN sekaligus:
+- JOIN Mahasiswa: Menghubungkan kehadiran dengan data mahasiswa melalui npm
+- JOIN Matkul: Menghubungkan kehadiran dengan mata kuliah melalui kode_matkul
+- JOIN Dosen: Menghubungkan kehadiran dengan dosen melalui nidn
+
+
+## 5. 👁️ VIEW Query
+
+VIEW adalah tabel virtual yang dibuat berdasarkan hasil dari query SELECT. VIEW tidak menyimpan data secara fisik di database, melainkan menampilkan data secara dinamis dari satu atau lebih tabel.
+- **👁️ View Kelas**
+
+Menampilkan daftar semua kelas.
+```sql
+CREATE VIEW v_kelas AS
+SELECT ROW_NUMBER() OVER (ORDER BY kode_kelas) AS No, kelas.* FROM Kelas;
+```
+- **👁️ View Dosen**
+
+Menampilkan data dosen dengan NIDN dan nama.
+```sql
+CREATE VIEW v_dosen AS
+SELECT ROW_NUMBER() OVER (ORDER BY d.nidn) AS No, d.nidn, d.nama_dosen FROM Dosen d;
+```
+- **👁️ View Matkul**
+
+Menampilkan semua mata kuliah lengkap dengan SKS.
+```sql
+CREATE VIEW v_matkul AS
+SELECT ROW_NUMBER() OVER (ORDER BY kode_matkul) AS No, matkul.* FROM Matkul;
+```
+- **👁️ View Mahasiswa + Kelas**
+
+Menampilkan data mahasiswa lengkap dengan nama kelasnya.
+```sql
+CREATE VIEW v_mahasiswa_kelas AS
+SELECT ROW_NUMBER() OVER (ORDER BY m.npm) AS No,  
+    m.npm, m.nama_mahasiswa, m.email, k.nama_kelas
+FROM Mahasiswa m 
+JOIN Kelas k ON m.kode_kelas = k.kode_kelas;
+```
+- **👁️ View Kehadiran Mahasiswa Lengkap**
+  
+	Menampilkan data kehadiran mahasiswa lengkap dengan nama dosen & matkul.
+```sql
+CREATE VIEW v_kehadiran_mahasiswa AS
+SELECT kh.id_kehadiran, m.npm, m.nama_mahasiswa, kh.tanggal, kh.pertemuan, kh.status, 
+  mk.nama_matkul, d.nama_dosen
+FROM Kehadiran kh
+JOIN Mahasiswa m ON kh.npm = m.npm
+JOIN Matkul mk ON kh.kode_matkul = mk.kode_matkul
+JOIN Dosen d ON kh.nidn = d.nidn;
+```
+
+
+
+
+
+
+
+
+
