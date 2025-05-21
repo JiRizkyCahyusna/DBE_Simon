@@ -8,15 +8,17 @@ Repositori ini berisi kumpulan query SQL untuk membangun sistem database kehadir
 #
 ## 🧱 Struktur Tabel dan Relasi
 🆕 Tabel dan Query CREATE
-👤 Tabel user
+- 👤 **Tabel `user`**  
 Menyimpan data pengguna sistem.
---sql
+
+```sql
 CREATE TABLE user (
   id_user INT(10) AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(30) NOT NULL,
   password VARCHAR(30) NOT NULL,
   level VARCHAR(30) NOT NULL
 );
+```
 
 👨‍🏫 Tabel dosen
 Menyimpan data dosen, terhubung dengan user.
