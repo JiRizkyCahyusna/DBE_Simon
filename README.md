@@ -9,7 +9,7 @@ Repositori ini berisi kumpulan query SQL untuk membangun sistem database kehadir
 ## 🧱 Struktur Tabel dan Relasi
 🆕 Tabel dan Query CREATE
 - 👤 **Tabel `user`**  
-Menyimpan data pengguna sistem.
+- Menyimpan data pengguna sistem.
 
 ```sql
 CREATE TABLE user (
