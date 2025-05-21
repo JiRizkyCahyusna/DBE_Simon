@@ -34,7 +34,7 @@ CREATE TABLE user (
 );
 ```
 
--🏫 **Tabel kelas**
+- 🏫 **Tabel kelas**
 
 Menyimpan kode dan nama kelas.
 
