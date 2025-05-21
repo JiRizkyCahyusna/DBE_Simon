@@ -6,6 +6,10 @@ Repositori ini berisi kumpulan query SQL untuk membangun sistem database kehadir
 
 ---
 #
+## Gambar ERD
+
+<image src = "![Sistem Monitoring Kehadiran Mahasiswa (5)](https://github.com/user-attachments/assets/bc0aa292-ec3c-465d-bd40-b4204658c3b7)
+">
 ## 🧱 Struktur Tabel dan Relasi
 ## 1. 🆕 Tabel dan Query CREATE
 - 👤 **Tabel user**  
