@@ -20,34 +20,32 @@ CREATE TABLE user (
 );
 ```
 
-👨‍🏫 Tabel dosen
+- 👨‍🏫 **Tabel dosen**
 Menyimpan data dosen, terhubung dengan user.
 
-sql
-Salin
-Edit
-CREATE TABLE dosen (
+```sql
+  CREATE TABLE dosen (
   nidn INT(10) PRIMARY KEY,
   nama_dosen VARCHAR(30) NOT NULL,
   id_user INT(10) NOT NULL,
   FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE ON UPDATE CASCADE
 );
-🏫 Tabel kelas
+```
+
+-🏫 **Tabel kelas**
 Menyimpan kode dan nama kelas.
 
-sql
-Salin
-Edit
+```sql
 CREATE TABLE kelas (
   kode_kelas VARCHAR(5) PRIMARY KEY,
   nama_kelas VARCHAR(30) NOT NULL
 );
-🎓 Tabel mahasiswa
+```
+
+- **🎓 Tabel mahasiswa**
 Data mahasiswa dengan relasi ke user dan kelas.
 
-sql
-Salin
-Edit
+```sql
 CREATE TABLE mahasiswa (
   npm INT(10) PRIMARY KEY,
   nama_mahasiswa VARCHAR(30) NOT NULL,
@@ -57,23 +55,24 @@ CREATE TABLE mahasiswa (
   FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (kode_kelas) REFERENCES kelas(kode_kelas) ON DELETE CASCADE ON UPDATE CASCADE
 );
-📚 Tabel matkul
+```
+
+- **📚 Tabel matkul**
 Data mata kuliah dengan SKS.
 
-sql
-Salin
-Edit
+```sql
 CREATE TABLE matkul (
   kode_matkul VARCHAR(5) PRIMARY KEY,
   nama_matkul VARCHAR(30) NOT NULL,
   sks INT(4) NOT NULL
 );
-🗓️ Tabel kehadiran
+```
+
+
+- **🗓️ Tabel kehadiran**
 Mencatat kehadiran mahasiswa per pertemuan.
 
-sql
-Salin
-Edit
+```sql
 CREATE TABLE kehadiran (
   id_kehadiran INT(5) AUTO_INCREMENT PRIMARY KEY,
   tanggal DATE NOT NULL,
@@ -89,3 +88,4 @@ CREATE TABLE kehadiran (
   FOREIGN KEY (kode_kelas) REFERENCES kelas(kode_kelas) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT unique_kehadiran UNIQUE (npm, tanggal, pertemuan)
 );
+```
