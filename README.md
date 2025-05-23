@@ -32,6 +32,54 @@ Setiap mata kuliah bisa memiliki banyak data kehadiran karena diikuti oleh banya
 7. Kelas → Kehadiran (1 : N) :
 Satu kelas dapat muncul dalam banyak data kehadiran karena mencakup kehadiran mahasiswa di berbagai pertemuan. Ini juga relasi satu ke banyak.
 
+# 📚 Panduan Membuat Database di phpMyAdmin & Menyambungkannya ke Navicat
+
+Dokumen ini berisi langkah-langkah membuat database menggunakan *phpMyAdmin* dan menyambungkannya ke *Navicat* untuk keperluan pengembangan aplikasi berbasis database MySQL.
+
+---
+
+## ⚙ 1. Membuat Database di phpMyAdmin
+
+### Langkah-langkah:
+1. Buka browser dan kunjungi: http://localhost/phpmyadmin
+2. 🔐 Login (jika diminta):
+   - Username: root
+   - Password: (kosong secara default, kecuali diatur sendiri)
+3. 📁 Klik tab *Databases*
+4. Masukkan *nama database* (contoh: db_kasir)
+5. Pilih *Collation*: utf8_general_ci (opsional tapi disarankan)
+6.  Klik tombol *Create*
+7. Database berhasil dibuat dan siap digunakan
+
+---
+
+
+---
+
+## ⚒ 2. Akses Database & Jalankan Query di Navicat
+
+### Langkah-langkah:
+
+1. 🚀 Buka Aplikasi Navicat dan pastikan koneksi ke server MySQL.
+   Jika belum:
+   - Klik menu **Connection > MySQL**
+   - Isi:
+     - **Connection Name**: `Localhost`
+     - **Host**: `127.0.0.1`
+     - **Port**: `3306`
+     - **Username**: `root`
+     - **Password**: *(kosong jika default XAMPP)*
+   - Klik **Test Connection**, lalu **OK**
+
+2. 🗂 Klik kanan pilih open connection
+
+3. 📁 Pilih database yang ingin digunakan (misalnya: `simon_kehadiran`), lalu klik dua kali untuk melihat isi tabelnya.
+
+4. Klik kanan pada nama database> pilih **New Query** untuk membuka jendela editor query.
+
+5. Tulis dan jalankan query SQL: create, insert, join dan yang lainnya.
+
+6. ⚡ Klik tombol **Run** untuk mengeksekusi query.
 
 
 
