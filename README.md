@@ -46,7 +46,7 @@ Dokumen ini berisi langkah-langkah membuat database menggunakan *phpMyAdmin* dan
    - Username: root
    - Password: (kosong secara default, kecuali diatur sendiri)
 3. 📁 Klik tab *Databases*
-4. Masukkan *nama database* (contoh: db_kasir)
+4. Masukkan *nama database* (contoh: simon_kehadiran)
 5. Pilih *Collation*: utf8_general_ci (opsional tapi disarankan)
 6.  Klik tombol *Create*
 7. Database berhasil dibuat dan siap digunakan
